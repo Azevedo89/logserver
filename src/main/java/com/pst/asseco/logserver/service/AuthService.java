@@ -9,4 +9,8 @@ public class AuthService {
         System.out.println("auth cont");
         return email.equals("demo@pst.asseco.com") && password.equals("demo");
     }
+
+    /*public String getUsernameFromToken(String jwt) {
+        throw new UnsupportedOperationException("Unimplemented method 'getUsernameFromToken'");
+    } */
 }

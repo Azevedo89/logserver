@@ -1,37 +1,39 @@
 package com.pst.asseco.logserver.controller;
  
 import com.pst.asseco.logserver.model.PFSLog;
-import com.pst.asseco.logserver.model.LoginRequest;
-import com.pst.asseco.logserver.repository.PFSLogRepository;
-import com.pst.asseco.logserver.service.AuthService;
- 
+/* import com.pst.asseco.logserver.model.LoginRequest;
+ */import com.pst.asseco.logserver.repository.PFSLogRepository;
+/* import com.pst.asseco.logserver.service.AuthService;
+ */
+/* import jakarta.annotation.security.PermitAll;
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+/* import org.springframework.http.HttpStatus;
+ */import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
- 
+
 import java.util.Date;
 import java.util.Optional;
-import java.util.Map;
-import java.util.HashMap;
- 
+/* import java.util.Map;
+ *//* import java.util.HashMap;
+ */ 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+/* import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody; */
  
- 
+
 @RestController
 public class PFSLogController {
  
     @Autowired
     private PFSLogRepository pfsLogRepository;
  
-    @Autowired
-    private AuthService authService;
+    /* @Autowired
+    private AuthService authService; */
  
     @GetMapping("/logs")
     public ResponseEntity<Page<PFSLog>> getUsersWithPagination(@RequestParam String user, Pageable pageable) {
@@ -82,7 +84,8 @@ public class PFSLogController {
         }
     }
    
-    @PostMapping("/login")
+    /* @PostMapping("/login")
+    @PermitAll
     public ResponseEntity<?> login(@RequestBody LoginRequest request){
         boolean isAuthenticated = authService.authenticate(request.getEmail(), request.getPassword());
         if (isAuthenticated) {
@@ -96,6 +99,5 @@ public class PFSLogController {
             errorData.put("message", "Invalid email or password");
             return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorData);
         }
-    }
- 
+    } */
 }
