@@ -2,6 +2,7 @@ package com.pst.asseco.logserver.controller;
  
 import com.pst.asseco.logserver.model.PFSLog;
 import com.pst.asseco.logserver.repository.PFSLogRepository;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -17,12 +18,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
+@RequestMapping("/logs")
 public class PFSLogController {
  
     @Autowired
     private PFSLogRepository pfsLogRepository;
 
-    @GetMapping("/logs")
+    @GetMapping("")
     public ResponseEntity<Page<PFSLog>> getLogsFiltered(
         @RequestParam(required = false) String user,
         @RequestParam(required = false) Date date,
@@ -38,7 +40,7 @@ public class PFSLogController {
             return ResponseEntity.ok(logsPage);
         }
  
-    @GetMapping("/logs/{id}")
+    @GetMapping("/{id}")
     public ResponseEntity<PFSLog> getLogDetails(@PathVariable Long id){
         Optional<PFSLog> log = pfsLogRepository.findById(id);
         if (log.isPresent()){
