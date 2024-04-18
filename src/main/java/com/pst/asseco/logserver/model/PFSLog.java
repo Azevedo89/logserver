@@ -18,7 +18,7 @@ public class PFSLog {
     private Long id;
  
     @Column(name = "correlationId")
-    private Long correlationId;
+    private String correlationId;
  
     @Column(name = "date")
     private Date date;
@@ -72,11 +72,11 @@ public class PFSLog {
         this.id = id;
     }
  
-    public Long getCorrelationId() {
+    public String getCorrelationId() {
         return correlationId;
     }
  
-    public void setCorrelationId(Long correlationId) {
+    public void setCorrelationId(String correlationId) {
         this.correlationId = correlationId;
     }
  

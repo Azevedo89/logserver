@@ -31,12 +31,12 @@ public class PFSLogController {
         @RequestParam(required = false) String application,
         Pageable pageable) {
 
-        System.out.println("Filtros aplicados: user=" + user + ", date=" + date + ", time=" + time + ", station=" + station + ", application=" + application);
+            System.out.println("Filtros aplicados: user=" + user + ", date=" + date + ", time=" + time + ", station=" + station + ", application=" + application);
 
-        Page<PFSLog> logsPage = pfsLogRepository.findByFilters(user, date, time, station, application, pageable);
+            Page<PFSLog> logsPage = pfsLogRepository.findByFilters(user, date, time, station, application, pageable);
 
-        return ResponseEntity.ok(logsPage);
-    }
+            return ResponseEntity.ok(logsPage);
+        }
  
     @GetMapping("/logs/{id}")
     public ResponseEntity<PFSLog> getLogDetails(@PathVariable Long id){
@@ -49,3 +49,4 @@ public class PFSLogController {
     }
 
 }
+
