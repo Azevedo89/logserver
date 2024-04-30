@@ -2,15 +2,18 @@ package com.pst.asseco.logserver.model;
  
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.Inheritance;
+import jakarta.persistence.InheritanceType;
 import jakarta.persistence.Table;
 import jakarta.persistence.Column;
-import jakarta.persistence.GenerationType;
  
 import java.util.Date;
  
 @Entity
 @Table(name = "t_pfslog")
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE) 
 public class PFSLog {
  
     @Id
@@ -19,6 +22,9 @@ public class PFSLog {
  
     @Column(name = "correlationId")
     private String correlationId;
+
+    @Column(name = "encryption")
+    private String encryption;
  
     @Column(name = "date")
     private Date date;
@@ -61,8 +67,31 @@ public class PFSLog {
  
     @Column(name = "errormessage")
     private String errormessage;
+
+    @Column(name = "expiration")
+    private String expiration;
+
+    @Column(name = "remoteaddr")
+    private String remoteaddr;
+
+    @Column(name = "servername")
+    private String servername;
+
+    @Column(name = "https")
+    private String https;
+
+    @Column(name = "apidata")
+    private String apidata;
  
     // Getters and Setters
+
+    public String getApidata() {
+        return apidata;
+    }
+
+    public void setApidata(String apidata) {
+        this.apidata = apidata;
+    }
  
     public Long getId() {
         return id;
@@ -79,7 +108,7 @@ public class PFSLog {
     public void setCorrelationId(String correlationId) {
         this.correlationId = correlationId;
     }
- 
+
     public Date getDate() {
         return date;
     }
@@ -190,6 +219,46 @@ public class PFSLog {
  
     public void setErrormessage(String errormessage) {
         this.errormessage = errormessage;
+    }
+
+    public String getEncryption() {
+        return encryption;
+    }
+ 
+    public void setEncryption(String encryption) {
+        this.encryption = encryption;
+    }
+
+    public String getExpiration() {
+        return expiration;
+    }
+ 
+    public void setExpiration(String expiration) {
+        this.expiration = expiration;
+    }
+
+    public String getRemoteaddr() {
+        return remoteaddr;
+    }
+ 
+    public void setRemoteaddr(String remoteaddr) {
+        this.remoteaddr = remoteaddr;
+    }
+
+    public String getServername() {
+        return servername;
+    }
+ 
+    public void setServername(String servername) {
+        this.servername = servername;
+    }
+
+    public String getHttps() {
+        return https;
+    }
+ 
+    public void setHttps(String https) {
+        this.https = https;
     }
  
 }
