@@ -4,6 +4,7 @@ import com.pst.asseco.logserver.model.PFSLog;
 import com.pst.asseco.logserver.repository.PFSLogRepository;
 
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,6 +29,7 @@ public class PFSLogController {
         @RequestParam(required = false) String application,
         Pageable pageable) {
 
+            System.out.println("Filtros aplicados: user=" + user + ", station=" + station + ", application=" + application);
             System.out.println("Filtros aplicados: user=" + user + ", station=" + station + ", application=" + application);
 
             Page<PFSLog> logsPage = pfsLogRepository.findByFilters(user, station, application, pageable);

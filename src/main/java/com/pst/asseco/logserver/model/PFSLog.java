@@ -109,6 +109,7 @@ public class PFSLog {
         this.correlationId = correlationId;
     }
 
+
     public Date getDate() {
         return date;
     }
@@ -260,5 +261,5 @@ public class PFSLog {
     public void setHttps(String https) {
         this.https = https;
     }
- 
+
 }
