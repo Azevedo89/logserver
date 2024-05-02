@@ -76,5 +76,12 @@ public class PFSLogController {
         List<String> apiTypes = jdbcTemplate.queryForList(sql, String.class); 
         return ResponseEntity.ok(apiTypes); 
     }
+
+    @GetMapping("/transactions-types")
+    public ResponseEntity<List<String>> getDistinctTransactionsTypes() {
+        String sql = "SELECT DISTINCT transaction FROM t_pfslog"; 
+        List<String> apiTypes = jdbcTemplate.queryForList(sql, String.class); 
+        return ResponseEntity.ok(apiTypes); 
+    }
      
 }
