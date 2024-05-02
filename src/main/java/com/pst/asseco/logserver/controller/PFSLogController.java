@@ -98,5 +98,12 @@ public class PFSLogController {
         LocalDate oldestDate = jdbcTemplate.queryForObject(sql, LocalDate.class); 
         return ResponseEntity.ok(oldestDate); 
     }
+
+    @GetMapping("/latest-date")
+    public ResponseEntity<LocalDate> getLatestDate() {
+        String sql = "SELECT MAX(date) FROM t_pfslog"; 
+        LocalDate oldestDate = jdbcTemplate.queryForObject(sql, LocalDate.class); 
+        return ResponseEntity.ok(oldestDate); 
+    }
      
 }
