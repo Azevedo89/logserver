@@ -8,9 +8,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.*; 
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
@@ -67,6 +68,13 @@ public class PFSLogController {
         String sql = "SELECT COUNT(id) FROM t_pfslog"; 
         Long count = jdbcTemplate.queryForObject(sql, Long.class); 
         return ResponseEntity.ok(count); 
+    }
+
+    @GetMapping("/api-types")
+    public ResponseEntity<List<String>> getDistinctApiTypes() {
+        String sql = "SELECT DISTINCT api FROM t_pfslog"; 
+        List<String> apiTypes = jdbcTemplate.queryForList(sql, String.class); 
+        return ResponseEntity.ok(apiTypes); 
     }
      
 }
