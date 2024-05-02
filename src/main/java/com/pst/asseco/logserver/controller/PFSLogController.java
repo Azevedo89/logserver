@@ -8,8 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*; 
+import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -89,6 +90,13 @@ public class PFSLogController {
         String sql = "SELECT DISTINCT transaction FROM t_pfslog"; 
         List<String> apiTypes = jdbcTemplate.queryForList(sql, String.class); 
         return ResponseEntity.ok(apiTypes); 
+    }
+
+    @GetMapping("/oldest-date")
+    public ResponseEntity<LocalDate> getOldestDate() {
+        String sql = "SELECT MIN(date) FROM t_pfslog"; 
+        LocalDate oldestDate = jdbcTemplate.queryForObject(sql, LocalDate.class); 
+        return ResponseEntity.ok(oldestDate); 
     }
      
 }
