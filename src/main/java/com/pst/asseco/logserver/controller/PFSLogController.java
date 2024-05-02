@@ -70,6 +70,13 @@ public class PFSLogController {
         return ResponseEntity.ok(count); 
     }
 
+    @GetMapping("/count-users")
+    public ResponseEntity<Long> getLogsCountUser() {
+        String sql = "SELECT COUNT(user) FROM t_pfslog"; 
+        Long count = jdbcTemplate.queryForObject(sql, Long.class); 
+        return ResponseEntity.ok(count); 
+    }
+
     @GetMapping("/api-types")
     public ResponseEntity<List<String>> getDistinctApiTypes() {
         String sql = "SELECT DISTINCT api FROM t_pfslog"; 
