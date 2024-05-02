@@ -105,5 +105,17 @@ public class PFSLogController {
         LocalDate oldestDate = jdbcTemplate.queryForObject(sql, LocalDate.class); 
         return ResponseEntity.ok(oldestDate); 
     }
+
+    @GetMapping("/dashboard")
+    public ResponseEntity<Map<String, Object>> getDashboardData() {
+        Map<String, Object> dashboardData = new HashMap<>();
+        dashboardData.put("logsCount", getLogsCount());
+        dashboardData.put("usersCount", getLogsCountUser());
+        dashboardData.put("apiTypes", getDistinctApiTypes());
+        dashboardData.put("transactionTypes", getDistinctTransactionsTypes());
+        dashboardData.put("oldestDate", getOldestDate());
+        dashboardData.put("latestDate", getLatestDate());
+        return ResponseEntity.ok(dashboardData);
+    }
      
 }
