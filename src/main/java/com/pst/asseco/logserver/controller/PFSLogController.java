@@ -3,8 +3,7 @@ package com.pst.asseco.logserver.controller;
 import com.pst.asseco.logserver.model.PFSLog;
 import com.pst.asseco.logserver.repository.PFSLogRepository;
 
-
-
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -21,6 +20,9 @@ public class PFSLogController {
  
     @Autowired
     private PFSLogRepository pfsLogRepository;
+
+    @Autowired
+    private JdbcTemplate jdbcTemplate;
 
     @GetMapping("")
     public ResponseEntity<Page<PFSLog>> getLogsFiltered(
@@ -58,6 +60,13 @@ public class PFSLogController {
         } else {
             return ResponseEntity.notFound().build();
         }
+    }
+
+    @GetMapping("/count")
+    public ResponseEntity<Long> getLogsCount() {
+        String sql = "SELECT COUNT(id) FROM t_pfslog"; 
+        Long count = jdbcTemplate.queryForObject(sql, Long.class); 
+        return ResponseEntity.ok(count); 
     }
      
 }
