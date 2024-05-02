@@ -117,5 +117,29 @@ public class PFSLogController {
         dashboardData.put("latestDate", getLatestDate());
         return ResponseEntity.ok(dashboardData);
     }
+
+    @GetMapping("/stations")
+    public List<String> getDistinctStations() {
+        String sql = "SELECT DISTINCT station FROM t_pfslog";
+        return jdbcTemplate.queryForList(sql, String.class);
+    }
+
+    @GetMapping("/applications")
+    public List<String> getDistinctApplications() {
+        String sql = "SELECT DISTINCT application FROM t_pfslog";
+        return jdbcTemplate.queryForList(sql, String.class);
+    }
+
+    @GetMapping("/apis")
+    public List<String> getDistinctApis() {
+        String sql = "SELECT DISTINCT api FROM t_pfslog";
+        return jdbcTemplate.queryForList(sql, String.class);
+    }
+
+    @GetMapping("/transactions")
+    public List<String> getDistinctTransactions() {
+        String sql = "SELECT DISTINCT transaction FROM t_pfslog";
+        return jdbcTemplate.queryForList(sql, String.class);
+    }
      
 }
