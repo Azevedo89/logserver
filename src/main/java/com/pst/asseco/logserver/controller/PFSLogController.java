@@ -30,7 +30,6 @@ public class PFSLogController {
         Pageable pageable) {
 
             System.out.println("Filtros aplicados: user=" + user + ", station=" + station + ", application=" + application);
-            System.out.println("Filtros aplicados: user=" + user + ", station=" + station + ", application=" + application);
 
             Page<PFSLog> logsPage = pfsLogRepository.findByFilters(user, station, application, pageable);
 
