@@ -38,18 +38,20 @@ public class PFSLogController {
         @RequestParam(required = false) String transaction,
         @RequestParam(required = false) String errorcode,
         @RequestParam(required = false) String sessionid,
+        @RequestParam(required = false) String errormessage,
+        @RequestParam(required = false) String apidata, 
         Pageable pageable) {
 
             System.out.println("Filtros aplicados: user=" + user + ", station=" + station + ", application=" + application 
                             + ", date=" + date + ", time=" + time + ", id=" + id 
                             + ", api=" + api + ", transaction=" + transaction + ", errorcode=" + errorcode 
-                            + ", sessionid=" + sessionid);
+                            + ", sessionid=" + sessionid + ", errormessage=" + errormessage
+                            + ", apidata=" + apidata); 
 
-            Page<PFSLog> logsPage = pfsLogRepository.findByFilters(user, station, application, date, time, id, api, transaction, errorcode, sessionid, pageable);
-
+            Page<PFSLog> logsPage = pfsLogRepository.findByFilters(user, station, application, date, time, id, api, transaction, errorcode, sessionid, errormessage, apidata, pageable); // Passando apidata para o método do repositório
+            System.out.println("query ok");
             return ResponseEntity.ok(logsPage);
     }
-
  
     @GetMapping("details/{id}")
     public ResponseEntity<Map<String, String>> getLogDetails(@PathVariable Long id) {

@@ -26,7 +26,9 @@ public interface PFSLogRepository extends PagingAndSortingRepository<PFSLog, Lon
        "(:api is null or l.api = :api) AND " +
        "(:transaction is null or l.transaction = :transaction) AND " +
        "(:errorcode is null or l.errorcode = :errorcode) AND " +
-       "(:sessionid is null or l.sessionid = :sessionid)")
+       "(:sessionid is null or l.sessionid = :sessionid) AND " +
+       "(:errormessage is null or l.errormessage like %:errormessage%) AND " + 
+       "(:apidata is null or l.apidata like %:apidata%)") 
        Page<PFSLog> findByFilters(@Param("user") String user,
                                    @Param("station") String station,
                                    @Param("application") String application,
@@ -37,6 +39,7 @@ public interface PFSLogRepository extends PagingAndSortingRepository<PFSLog, Lon
                                    @Param("transaction") String transaction,
                                    @Param("errorcode") String errorcode,
                                    @Param("sessionid") String sessionid,
+                                   @Param("errormessage") String errormessage,
+                                   @Param("apidata") String apidata, 
                                    Pageable pageable);
-
 }
