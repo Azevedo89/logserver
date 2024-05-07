@@ -11,4 +11,4 @@ spring:
     user:
       name: demo
       password: #{bcrypt}
-  
+
