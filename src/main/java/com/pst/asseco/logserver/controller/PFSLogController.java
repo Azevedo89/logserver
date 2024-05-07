@@ -86,7 +86,7 @@ public class PFSLogController {
 
     @GetMapping("/count-users")
     public ResponseEntity<Long> getLogsCountUser() {
-        String sql = "SELECT COUNT(user) FROM t_pfslog"; 
+        String sql = "SELECT COUNT(DISTINCT(user)) FROM t_pfslog"; 
         Long count = jdbcTemplate.queryForObject(sql, Long.class); 
         return ResponseEntity.ok(count); 
     }
@@ -124,8 +124,6 @@ public class PFSLogController {
         Map<String, Object> dashboardData = new HashMap<>();
         dashboardData.put("logsCount", getLogsCount());
         dashboardData.put("usersCount", getLogsCountUser());
-        dashboardData.put("apiTypes", getDistinctApiTypes());
-        dashboardData.put("transactionTypes", getDistinctTransactionsTypes());
         dashboardData.put("oldestDate", getOldestDate());
         dashboardData.put("latestDate", getLatestDate());
         return ResponseEntity.ok(dashboardData);
