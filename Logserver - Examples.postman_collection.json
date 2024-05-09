@@ -1,0 +1,150 @@
+{
+	"info": {
+		"_postman_id": "fd24f9ae-87e2-4ec2-aa9f-f6efe01ead7e",
+		"name": "Logserver - Examples",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20013327"
+	},
+	"item": [
+		{
+			"name": "logs byId",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"logs_id\", \"4621398\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwZWRyb3ZpZWlyYUBnbWFpbC5jb20iLCJpYXQiOjE3MTM0NTYwNDksImV4cCI6MTcxMzQ1NzQ4OX0.w-04JR2HAgfFxk00tTiNNBXtNziO34IjHtyu0lNiLXY",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/logs/{{logs_id}}?user=MWUSER2&page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logs",
+						"{{logs_id}}"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "MWUSER2"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "logs",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"logs_id\", \"4621398\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJwZWRyb3ZpZWlyYUBnbWFpbC5jb20iLCJpYXQiOjE3MTM0NTYwNDksImV4cCI6MTcxMzQ1NzQ4OX0.w-04JR2HAgfFxk00tTiNNBXtNziO34IjHtyu0lNiLXY",
+						"type": "text"
+					},
+					{
+						"key": "",
+						"value": "",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "http://localhost:8080/logs/{{logs_id}}?user=MWUSER2&page=0&size=10",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"logs",
+						"{{logs_id}}"
+					],
+					"query": [
+						{
+							"key": "user",
+							"value": "MWUSER2"
+						},
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "auth",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		},
+		{
+			"name": "log dashboard",
+			"request": {
+				"method": "GET",
+				"header": []
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "logs_id",
+			"value": ""
+		}
+	]
+}
